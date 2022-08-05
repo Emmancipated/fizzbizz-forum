@@ -1,0 +1,64 @@
+<%- include("partials/header"); -%>
+<h1 class="cat-header">Post</h1>
+<a style="display: none;" class="comment-link poster-link">Make a Post</a>
+
+<a href="/<%= category %>"> <p class="category <%= category %>" style="margin-top: .4rem;"><%= category %></p></a>
+    <div class="post-container">
+        <div class="post-property">
+            <div class="post-title">
+                <h2><%= postHead %> </h2>
+                <p class="author-paragraph"> by: <span class="author"><%= author %></span> at:<span class="time"> <%= createdAt.substring(1, 20) %></span></p>
+            </div>
+        
+            <div class="post-body">
+                <div class="post-body-content">
+                    <p><%= postBody %></p>
+                </div>  
+            </div>
+        </div>
+
+        <div class="post-body like-dislike">
+            <form action="/likes" method="post" id="postlike_form">
+            <input type="hidden" name="<%= postID%>">
+            <input type="hidden" class="like" name="post"></input> 
+            <input type="hidden" name="<%= url%>/<%= postHead%>">
+            <i class="fa-solid fa-thumbs-up fa-lg" id="postsubmit-like"></i>
+            <span id="like-counter" ><%= postLike %></span> <span>likes</span> </form>
+
+            <form action="/dislikes" method="post" id="postdislike_form">
+            <input type="hidden" name="<%= postID%>">
+            <input  type="hidden" class="dislike" name="post"></input> 
+            <input type="hidden" name="<%= url%>/<%= postHead%>">
+            <i class="fa-solid fa-thumbs-down fa-lg" id="postsubmit-dislike"></i>
+            <span id="unlike-counter" ><%= postdisLike %></span> <span>dislikes</span> 
+                        </form>
+            </div>
+        <a href="/<%= url%>/<%= postHead%>/<%= postID%>/comment"  class="comment-link">Add Comment</a>
+    </div>
+
+<%  comments.forEach(function(comment){ %>
+<div class="comments">    
+        <p><%=comment.commentBody %></p>
+        <div class="like-dislike">
+        <form action="/likes" method="post" id="commentlike_form">
+            <input type="hidden" name="<%= postID%>">
+            <input type="hidden" class="like" name="<%=comment._id%>"></input>
+            <input type="hidden" name="<%= url%>/<%= postHead%>">
+            <i class="fa-solid fa-thumbs-up fa-lg" id="commentsubmit-like"></i>
+            <span id="like-counter" ><%=comment.likes.length%></span> <span>likes</span> </form>
+
+            <form action="/dislikes" method="post" id="commentdislike_form">
+            <input type="hidden" name="<%= postID%>">
+            <input  type="hidden" class="dislike" name="<%=comment._id%>"></input> 
+            <input type="hidden" name="<%= url%>/<%= postHead%>">
+            <i class="fa-solid fa-thumbs-down fa-lg" id="commentsubmit-dislike"></i>
+            <span id="unlike-counter" ><%=comment.dislikes.length%></span> <span>dislikes</span> 
+        </form>
+    </div>
+        <p class="author-paragraph">by: <span class="author"><%= comment.user.moniker %> </span> at: <span class="time" ><%= JSON.stringify(comment.createdAt).substring(1,20) %></span></p>
+    
+        
+</div>
+<% }) %>
+
+<%- include("partials/footer"); -%>

@@ -1,0 +1,113 @@
+<%- include("partials/header"); -%>
+<style>
+    .required_field::after {
+        color: #ff1456;
+        content: "*";
+        display: inline;
+    }
+</style>
+<h1 class="cat-header">Register</h1>
+<a style="display: none;" class="comment-link poster-link">Make a Post</a>
+
+
+<div class="form-style post-container">
+<h2 class="subtitle">Please create an account to enjoy full features </h2>
+<form action="/register" method="post" id="reg-form">
+
+    <div class="input-container ic1">
+        <input type="text" name="fName" id="f-name" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="f-name" class="required_field placeholder">First Name <span class="error" aria-live="polite"></span></label>        
+    </div>
+    <div class="input-container ic1">
+        <input type="text" name="lName" id="l-name" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="l-name" class="required_field placeholder">Last Name </label>
+    </div>
+    <div class="input-container ic1">
+        <input type="text" name="moniker" id="moniker" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="moniker" class="required_field placeholder">Username</label>
+    </div>
+    <div class="input-container ic1">
+        <input type="email" name="username" id="username" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="username" class="required_field placeholder">Email</label>
+    </div>
+
+    <div class="input-container ic1">
+        <input type="text" name="phoneNumber" id="phone" class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="phone" class="placeholder">Phone Number</label>
+    </div>
+
+    <div class="input-container ic1">
+        <input type="date" name="dob" id="dob" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="dob" class="required_field placeholder">Date of birth</label>
+    </div>
+    <p>Your date of birth will not be made public.</p>
+
+
+    <div class="input-container ic1">
+        <label for="dob" class="required_field">Gender</label>
+        <input type="radio" name="gender" id="male" value="Male" required> <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" value="Female" required> <label for="female">Female</label>
+        <input type="radio" name="gender" id="other" value="Other" required> <label for="other">Other</label>
+    </div>
+
+    <div class="input-container ic2">
+        <input type="password" name="password" id="password" required placeholder=" " class="input">
+        <div class="cut"></div>
+        <label for="password" class="required_field placeholder">Password</label>
+       <!-- <p>Ensure to use a strong password that you can remember</p> -->
+    </div>
+
+    <div class="input-container ic1">
+        <input type="password" name="repassword" id="repassword" required class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="repassword" class="required_field placeholder">Confirm Password</label>
+       <p id="passwordChecker"></p>
+    </div>
+
+    <button type="submit" id="reg-form-submit"class="submit" >Register</button>
+
+</form>
+</div>
+<p id="reg-success"> <%= err %></p>
+
+<script>
+    const password = document.querySelector("#password");
+    const repassword = document.querySelector("#repassword");
+    const passwordChecker = document.querySelector("#passwordChecker");
+    const regSuccessMessage = document.querySelector("#reg-success");
+    const form = document.querySelector("#reg-form");
+    
+    
+
+    function confirmPassword(){
+        if(password.value!== repassword.value) {
+            console.log(repassword.value);
+            passwordChecker.innerHTML = "password does not match"
+            passwordChecker.style.color = "#ff1456"
+        } else {
+            passwordChecker.innerHTML = "password matches"
+            passwordChecker.style.color = "#2DFDB9"
+            
+        }
+        
+    }
+    
+    repassword.addEventListener("input", confirmPassword);
+    form.addEventListener("submit", function(e){
+        if(password.value!== repassword.value) {
+            e.preventDefault();
+        } else {
+            regSuccessMessage.innerHTML = "You have successfully created an account. You will be redirected to the homepage.";
+            console.log("You have successfully created an account. You will be redirected to the homepage."); 
+            return true;
+        }
+    });
+</script>
+
+<%- include("partials/footer"); -%>

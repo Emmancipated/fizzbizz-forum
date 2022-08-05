@@ -1,0 +1,19 @@
+<%- include("partials/header"); -%>
+<h1 class="cat-header">Post</h1>
+<a style="display: none;" class="comment-link poster-link">Make a Post</a>
+
+<p>This is the area where you make  post.</p>
+<p>There should be more writeups here just to inform the writer or poster of some of the rules that needs to be really ffjf  foofof followed.</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque dignissimos laborum et facilis necessitatibus dolorum laboriosam sed illo vitae, commodi neque architecto at, pariatur rerum obcaecati quaerat autem eligendi. Quod.</p>
+
+
+    <form action="/compose/post/<%= activeUser.params.catHeader %>" method="post">
+        <input type="text" name="postTitle" id="postTopic" required>
+        <textarea name="postContent" id="postMessage" cols="35" rows="20" required></textarea><br>
+        <input type="submit" value="post">
+    </form>
+    
+
+
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt provident aliquid, eaque tenetur temporibus quae et esse. Quam suscipit, quas ad eaque praesentium illum neque laboriosam. Delectus aut veritatis beatae?</p>
+<%- include("partials/footer"); -%>

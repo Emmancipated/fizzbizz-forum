@@ -1,0 +1,17 @@
+<%- include("partials/header"); -%>
+<h1>Make a post</h1>
+
+<p>This is the area where you make  post.</p>
+<p>There should be more writeups here just to inform the writer or poster of some of the rules that needs to be really ffjf  foofof followed.</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque dignissimos laborum et facilis necessitatibus dolorum laboriosam sed illo vitae, commodi neque architecto at, pariatur rerum obcaecati quaerat autem eligendi. Quod.</p>
+
+
+    <form action="/<%= url%>/<%= postName %>/<%= postID %>/comment" method="post">
+        <input type="hidden" name="articleID">
+        <textarea name="postComment" id="postMessage" cols="35" rows="20"></textarea><br>
+        <input type="submit" value="post">
+    </form>
+    
+
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt provident aliquid, eaque tenetur temporibus quae et esse. Quam suscipit, quas ad eaque praesentium illum neque laboriosam. Delectus aut veritatis beatae?</p>
+<%- include("partials/footer"); -%>

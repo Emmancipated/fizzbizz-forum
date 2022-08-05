@@ -1,0 +1,25 @@
+<%- include("partials/header"); -%>
+<h1 class="cat-header">Home</h1>
+<a style="display: none;" class="comment-link poster-link">Make a Post</a>
+
+
+    <main>
+      <%  topics.forEach(function(articles){ %>
+        <a href="<%= articles.url %>/<%= articles.postHead %>">
+        <article class="main-article"> 
+        <p class="<%= articles.category %> category"><%= articles.category %></p>
+          <h3 class="post-header"><%= articles.postHead %></h3>
+         <p class="post-body" ><%= articles.postBody.substring(0, 30)%>...</p>
+         
+         <p class="author-paragraph">by: <span class="author"><%= articles.user.moniker %></span></p>
+
+      </article>
+      
+
+    </a>
+      <%  }); %>
+
+     <%- include("partials/footer"); -%>
+    
+
+

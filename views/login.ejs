@@ -1,0 +1,29 @@
+<%- include("partials/header"); -%>
+
+
+<div class="form-style post-container">
+<form action="/login" method="post">
+    <h2 class="subtitle">Login to unlock full features</h2>
+
+    <div class="input-container ic1">
+        <input type="email" name="username" id="useremail" class="input" placeholder=" ">
+        <div class="cut"></div>
+        <label for="useremail" class="placeholder">Email</label>        
+    </div>
+
+    <div class="input-container ic1">
+        <input type="password" name="password" id="userpassword" class="input" placeholder=" ">
+        <div class="cut"></div> 
+        <label for="userpassword" class="placeholder">Password</label>
+       
+       <!-- <p>Ensure to use a strong password that you can remember</p> -->
+    </div>
+
+        <button type="submit" class="submit">Login</button>    
+</form>
+
+<p>Don't have an account yet? <span><a href="/register" class="comment-link">Sign Up here </a></span></p>
+
+<p>Creating an account with us means that you have read and agreed with FizzBizz <span><a href="#" class="comment-link">Terms and Conditions.</a></span></p>
+</div>
+<%- include("partials/footer"); -%>

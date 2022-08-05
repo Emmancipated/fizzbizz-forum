@@ -1,0 +1,27 @@
+<%- include("partials/header"); -%>
+<h1 class="cat-header">Search</h1>
+<a style="display: none;" class="comment-link poster-link">Make a Post</a>
+
+
+<h3 style="text-align: center; margin: 1rem 0; color: #ff1456;"><%= norecord %></h3>
+<main>
+
+<% searched.forEach((foundItems) => { %>
+
+    <a href="<%= foundItems.url %>/<%= foundItems.postHead %>">
+        <article class="main-article"> 
+        <p class="<%= foundItems.cat.slice(22) %> category"><%= foundItems.cat.slice(22) %></p>
+          <h3 class="post-header"><%= foundItems.postHead %></h3>
+         <p class="post-body" ><%= foundItems.postBody.substring(0, 30)%>...</p>
+         
+         <p class="author-paragraph">by: <span class="author"><%= foundItems.user.moniker %></span></p>
+
+      </article>
+      
+
+    </a>
+<% }) %>
+
+
+
+<%- include("partials/footer"); -%>

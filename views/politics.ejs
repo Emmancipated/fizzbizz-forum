@@ -1,0 +1,21 @@
+<%- include("partials/header"); -%>
+<h1 class="cat-header">Politics</h1>
+<p>This is the part where you post about politics</p>
+
+<main>
+    <%  articles.forEach(function(article){ %>      
+        <a href="<%= article.url %>/<%= article.postHead %>">
+            <article class="main-article"> 
+              <h3 class="post-header"><%= article.postHead %></h3>
+             <p class="post-body" ><%= article.postBody.substring(0, 30)%>...</p>             
+             <p class="author-paragraph">by: <span class="author"><%= article.user.moniker %></span></p>
+          </article>
+        </a>
+    <%  }); %>
+</main>
+    <a class="comment-link poster-link">Make a Post</a>
+
+
+
+<%- include("partials/footer"); -%>
+
