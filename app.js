@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-const session = require('express-session');
+const session = require('cookie-session');
 const passport = require("passport");
 const passportLocalmongoose = require("passport-local-mongoose");
 // const res = require("express/lib/response");
@@ -96,8 +96,8 @@ userSchema.plugin(passportLocalmongoose);
 // The model for the posts
 const Article = mongoose.model("Article", articleSchema);
 
-// articleSchema.index({postBody: "text"});
-Article.createIndexes({postBody: "text"});
+articleSchema.index({postBody: "text"});
+// Article.createIndexes({postBody: "text"});
 
 
 // The model for the comments
